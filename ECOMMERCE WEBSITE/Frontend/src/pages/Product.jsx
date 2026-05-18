@@ -28,11 +28,11 @@ const Product = () => {
     <div className='py-10'>
       <div className='flex flex-col lg:flex-row gap-8'>
         <div className='w-full lg:w-1/2'>
-          <div className='w-full h-[400px] flex items-center justify-center border border-gray-300 rounded-md overflow-hidden'>
+          <div className='w-full h-125 flex items-center justify-center border border-gray-300 rounded-md overflow-hidden bg-white'>
             <img
               src={image}
               alt={productData.name}
-              className='w-full h-full object-cover'
+              className='max-w-full max-h-full object-contain'
             />
           </div>
           <div className='w-full flex items-center gap-3 mt-4 overflow-x-auto'>
