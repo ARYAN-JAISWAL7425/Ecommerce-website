@@ -1,0 +1,32 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Prata&display=swap');
+
+@theme {
+  --color-cream: #FAF7F2;
+  --color-ink: #111111;
+  --color-muted: #6B6B6B;
+  --color-accent: #C8A97E;
+  --color-accent-dark: #B0916A;
+
+  --font-sans: "Outfit", system-ui, sans-serif;
+  --font-display: "Prata", "Outfit", serif;
+}
+
+html, body {
+  margin: 0;
+  background: #FAF7F2;
+  color: #111111;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input, select, textarea {
+  font-family: inherit;
+}

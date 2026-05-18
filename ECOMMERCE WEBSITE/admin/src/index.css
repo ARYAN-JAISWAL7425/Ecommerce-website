@@ -1,0 +1,32 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&display=swap');
+
+@theme {
+  --color-cream: #FAF7F2;
+  --color-ink: #111111;
+  --color-muted: #6B6B6B;
+  --color-accent: #C8A97E;
+  --color-accent-dark: #B0916A;
+}
+
+*{
+    font-family: "Outfit", sans-serif;
+}
+
+body {
+    background: #FAF7F2;
+    color: #111111;
+}
+
+.active{
+    background-color: #ffebf5;
+    border-color: #C586A5;
+}
+
+select,input,textarea{
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    padding: 0.5rem 0.75rem;
+    outline: none;
+    transition: border-color 0.2s ease-in-out;
+}
