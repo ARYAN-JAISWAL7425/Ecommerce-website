@@ -26,26 +26,28 @@ const Product = () => {
 
   return (
     <div className='py-10'>
-      <div className='flex flex-col lg:flex-row gap-8'>
+      <div className='flex flex-col lg:flex-row gap-10'>
         <div className='w-full lg:w-1/2'>
-          <div className='w-full h-125 flex items-center justify-center border border-gray-300 rounded-md overflow-hidden bg-white'>
+          <div className='w-full aspect-square flex items-center justify-center overflow-hidden'>
             <img
               src={image}
               alt={productData.name}
               className='max-w-full max-h-full object-contain'
             />
           </div>
-          <div className='w-full flex items-center gap-3 mt-4 overflow-x-auto'>
-            {productData.image.map((item, index) => (
-              <img
-                key={index}
-                src={item}
-                alt={productData.name}
-                className='w-20 h-20 object-cover border border-gray-200 rounded-md cursor-pointer'
-                onClick={() => setImage(item)}
-              />
-            ))}
-          </div>
+          {productData.image.length > 1 && (
+            <div className='w-full flex items-center gap-3 mt-4 overflow-x-auto'>
+              {productData.image.map((item, index) => (
+                <img
+                  key={index}
+                  src={item}
+                  alt={productData.name}
+                  className={`w-20 h-20 object-cover rounded-md cursor-pointer transition-opacity ${item === image ? 'opacity-100 ring-2 ring-accent' : 'opacity-70 hover:opacity-100'}`}
+                  onClick={() => setImage(item)}
+                />
+              ))}
+            </div>
+          )}
         </div>
 
         <div className='w-full lg:w-1/2'>
@@ -63,7 +65,7 @@ const Product = () => {
           <p className='text-xl font-medium text-gray-800 mt-3'>{currency}{productData.price}</p>
           <p className='text-sm text-gray-600 mt-2'>{productData.description}</p>
 
-          <div className='flex items-center gap-4 mt-4'>
+          <div className='flex items-center gap-4 mt-6'>
             <p>Select Size</p>
             <div className='flex items-center gap-2'>
               {productData.sizes?.map((sizeOption, index) => (
@@ -80,24 +82,26 @@ const Product = () => {
             </div>
           </div>
 
-          <button className='bg-ink text-white px-5 py-2 rounded-full hover:bg-black transition-colors mt-6' onClick={() => addToCart(productData._id, size)}>
+          <button className='bg-ink text-white px-6 py-3 rounded-full hover:bg-black transition-colors mt-6' onClick={() => addToCart(productData._id, size)}>
             Add to Cart
           </button>
 
-          <hr className='my-6' />
-          <p>100% Genuine Product</p>
-          <p>Cash on Delivery available</p>
-          <p>7 Days Return Policy</p>
-        </div>
-      </div>
+          <hr className='my-6 border-gray-200' />
 
-      <div className='mt-10 border border-gray-300 rounded-md p-4'>
-        <b className='text-xl font-medium'>Product Details</b>
-        <p className='text-gray-600 mt-2'>Reviews (122)</p>
-        <div className='grid gap-2 mt-4 text-gray-600'>
-          <p>Product ID: {productData._id}</p>
-          <p>Category: {productData.category}</p>
-          <p>Subcategory: {productData.subCategory}</p>
+          <div className='text-sm text-gray-600 space-y-1.5'>
+            <p>✓ 100% Genuine Product</p>
+            <p>✓ Cash on Delivery available</p>
+            <p>✓ 7 Days Return Policy</p>
+          </div>
+
+          <div className='mt-8 pt-6 border-t border-gray-200'>
+            <b className='text-base font-medium text-gray-800'>Product Details</b>
+            <div className='grid gap-1.5 mt-3 text-sm text-gray-600'>
+              <p>Category: <span className='text-gray-800'>{productData.category}</span></p>
+              <p>Subcategory: <span className='text-gray-800'>{productData.subCategory}</span></p>
+              <p>Available sizes: <span className='text-gray-800'>{productData.sizes?.join(', ')}</span></p>
+            </div>
+          </div>
         </div>
       </div>
 
